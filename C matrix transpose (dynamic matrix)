@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+void transpost(int ***mat, int ptr, int val){
+    int **mat1 = malloc(sizeof(int*) * ptr);
+    for(int i = 0; i < ptr; i++){
+        mat1[i] = malloc(sizeof(int) * val);
+    }
+    for(int i = 0; i < ptr; i++){
+        for(int j = 0; j < val; j++){
+            mat1[j][i] =  mat[0][i][j];
+        }
+    }
+    for(int i = 0; i < ptr; i++){
+        for(int j = 0; j < val; j++)
+        printf("%d ", mat1[i][j]);
+        printf("\n");
+    }
+}
+
+int main(){
+    int **mat, ptr, val;
+    printf("Codigo matriz transposta\n");
+    printf("digite o primeiro indice (quantidade de vetores dinamicos): ");
+    scanf("%d", &ptr);
+    mat = malloc(sizeof(int*) * ptr);
+    printf("digite o segundo indice (quantidade de valores para cada vetor dinamico: ");
+    scanf(" %d", &val);
+    for(int i = 0; i < ptr; i++)
+        mat[i] = malloc(sizeof(int) * val);
+
+      if (mat == NULL){
+        printf("Matriz invalida\n");
+    }   else if(mat != NULL){
+        printf("Matriz criada!\n");
+        printf("Adicione valores a matriz criada\n");
+    } 
+    for(int i = 0; i < ptr; i++){
+        for(int j = 0; j < val; j++){
+            printf("linha %d coluna %d: ", i , j );
+            scanf(" %d", &mat[i][j]);
+        }
+        
+    }
+    printf("Matriz\n");
+    for(int i = 0; i < ptr; i++){
+        for(int j = 0; j < val; j++)
+        printf("%d ", mat[i][j]);
+        printf("\n");
+    }
+    if(ptr >= 2 && val >= 2){
+         printf("Matriz transposta\n");
+         transpost(&mat, ptr,val);
+    } else if (ptr < 2 || val < 2){
+        printf("Impossivel transpostar!");
+    }
+   
+
+}
