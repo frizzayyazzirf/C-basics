@@ -182,7 +182,13 @@ void remocao(Pintao **arv, int val){
         
         Pintao *a = buscaarv(arvbin, val);
         if(*arv == a){
+            if(!(*arv)->pontdireito && !(*arv)->pontdireito)
             *arv = NULL;
+            else{
+                *arv = NULL;
+                inser(arv, arvbin, arvbin);
+            }
+
             return;
         }
         
